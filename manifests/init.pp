@@ -63,15 +63,10 @@ class apt(
     recurse => $purge_sources_list_d,
   }
   
-  exec { 'refresh_keys':
-    command => '/usr/bin/gpg --refresh-keys',
-  }
-
   exec { 'apt_update':
     command     => "${apt::params::provider} update",
     subscribe   => [ File['sources.list'], File['sources.list.d'] ],
     refreshonly => $refresh_only_apt_update,
-    require     => Exec['refresh_keys'],
   }
 
   case $disable_keys {
