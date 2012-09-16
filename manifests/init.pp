@@ -89,13 +89,13 @@ class apt(
 
   file { '98norecommends':
     ensure  => present,
-    content => 'APT::Install-Recommends "0";\n',
+    content => "APT::Install-Recommends '0';\n",
     path    => '/etc/apt/apt.conf.d/98norecommends',
   }
 
   file { '98nosuggests':
     ensure  => present,
-    content => 'APT::Install-Suggests "0";\n',
+    content => "APT::Install-Suggests '0';\n",
     path    => '/etc/apt/apt.conf.d/98nosuggests',
   }
 
