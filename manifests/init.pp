@@ -67,6 +67,7 @@ class apt(
     command     => "${apt::params::provider} update",
     subscribe   => [ File['sources.list'], File['sources.list.d'] ],
     refreshonly => $refresh_only_apt_update,
+    returns     => [ 0, 100 ],
   }
 
   case $disable_keys {
